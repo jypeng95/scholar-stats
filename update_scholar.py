@@ -25,29 +25,25 @@ table = data["cited_by"]["table"]
 
 citations = None
 h_index = None
-i10_index = None
 
 for item in table:
     if "citations" in item:
         citations = item["citations"]["all"]
     elif "h_index" in item:
         h_index = item["h_index"]["all"]
-    elif "i10_index" in item:
-        i10_index = item["i10_index"]["all"]
 
 if citations is None or h_index is None:
     raise RuntimeError(f"Could not parse citation metrics: {table}")
 
 citations_text = f"{citations:,}"
 h_text = str(h_index)
-i10_text = str(i10_index) if i10_index is not None else "—"
 
 svg = f"""<svg xmlns="http://www.w3.org/2000/svg"
-     width="500" height="64"
-     viewBox="0 0 500 64"
+     width="430" height="64"
+     viewBox="0 0 430 64"
      role="img"
      aria-label="Google Scholar metrics">
-  <rect width="500" height="64" rx="8" fill="#f7f7f7"/>
+  <rect width="430" height="64" rx="8" fill="#f7f7f7"/>
   <text x="18" y="26"
         font-family="Arial, Helvetica, sans-serif"
         font-size="15"
@@ -59,7 +55,7 @@ svg = f"""<svg xmlns="http://www.w3.org/2000/svg"
         font-family="Arial, Helvetica, sans-serif"
         font-size="14"
         fill="#555555">
-    {html.escape(citations_text)} citations · h-index {html.escape(h_text)} · i10-index {html.escape(i10_text)}
+    {html.escape(citations_text)} citations · h-index {html.escape(h_text)}
   </text>
 </svg>
 """
@@ -69,5 +65,5 @@ with open("scholar-stats.svg", "w", encoding="utf-8") as f:
 
 print(
     f"Updated scholar-stats.svg: "
-    f"{citations_text} citations, h-index {h_text}, i10-index {i10_text}"
+    f"{citations_text} citations, h-index {h_text}"
 )
