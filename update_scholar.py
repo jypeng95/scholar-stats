@@ -39,13 +39,13 @@ citations_text = f"{citations:,}"
 h_text = str(h_index)
 
 svg = f"""<svg xmlns="http://www.w3.org/2000/svg"
-     width="390" height="24"
-     viewBox="0 0 390 24"
+     width="430" height="28"
+     viewBox="0 0 430 28"
      role="img"
      aria-label="Google Scholar: {html.escape(citations_text)} citations, h-index {html.escape(h_text)}">
-  <text x="0" y="17"
+  <text x="0" y="20"
         font-family="Arial, Helvetica, sans-serif"
-        font-size="16"
+        font-size="18"
         fill="#444444">
     <tspan font-weight="600">Google Scholar</tspan>
     <tspan> · {html.escape(citations_text)} citations · h-index {html.escape(h_text)}</tspan>
